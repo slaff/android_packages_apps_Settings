@@ -47,9 +47,7 @@ public class SuggestionFeatureProviderImpl implements SuggestionFeatureProvider 
 
     @Override
     public boolean isSuggestionEnabled(Context context) {
-        final ActivityManager am =
-                (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        return !am.isLowRamDevice();
+        return false;
     }
 
     @Override
@@ -61,25 +59,7 @@ public class SuggestionFeatureProviderImpl implements SuggestionFeatureProvider 
 
     @Override
     public boolean isSuggestionComplete(Context context, @NonNull ComponentName component) {
-        final String className = component.getClassName();
-        if (className.equals(WallpaperSuggestionActivity.class.getName())) {
-            return WallpaperSuggestionActivity.isSuggestionComplete(context);
-        } else if (className.equals(StyleSuggestionActivity.class.getName())) {
-            return StyleSuggestionActivity.isSuggestionComplete(context);
-        } else if (className.equals(FingerprintSuggestionActivity.class.getName())) {
-            return FingerprintSuggestionActivity.isSuggestionComplete(context);
-        } else if (className.equals(FingerprintEnrollSuggestionActivity.class.getName())) {
-            return FingerprintEnrollSuggestionActivity.isSuggestionComplete(context);
-        } else if (className.equals(ScreenLockSuggestionActivity.class.getName())) {
-            return ScreenLockSuggestionActivity.isSuggestionComplete(context);
-        } else if (className.equals(WifiCallingSuggestionActivity.class.getName())) {
-            return WifiCallingSuggestionActivity.isSuggestionComplete(context);
-        } else if (className.equals(NightDisplaySuggestionActivity.class.getName())) {
-            return NightDisplayPreferenceController.isSuggestionComplete(context);
-        } else if (className.equals(ZenSuggestionActivity.class.getName())) {
-            return ZenOnboardingActivity.isSuggestionComplete(context);
-        }
-        return false;
+        return true;
     }
 
     @Override
